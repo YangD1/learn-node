@@ -1,3 +1,33 @@
+- [初见](#%e5%88%9d%e8%a7%81)
+  - [参考](#%e5%8f%82%e8%80%83)
+  - [概念](#%e6%a6%82%e5%bf%b5)
+- [Koa 基础](#koa-%e5%9f%ba%e7%a1%80)
+  - [HTTP 服务](#http-%e6%9c%8d%e5%8a%a1)
+  - [Context 对象](#context-%e5%af%b9%e8%b1%a1)
+  - [HTTP Rresponse 的类型](#http-rresponse-%e7%9a%84%e7%b1%bb%e5%9e%8b)
+  - [网页模板](#%e7%bd%91%e9%a1%b5%e6%a8%a1%e6%9d%bf)
+- [路由](#%e8%b7%af%e7%94%b1)
+  - [原生路由](#%e5%8e%9f%e7%94%9f%e8%b7%af%e7%94%b1)
+  - [koa-route 模块](#koa-route-%e6%a8%a1%e5%9d%97)
+  - [静态资源 koa-static](#%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90-koa-static)
+  - [重定向 redirect](#%e9%87%8d%e5%ae%9a%e5%90%91-redirect)
+- [中间件](#%e4%b8%ad%e9%97%b4%e4%bb%b6)
+  - [Logger 功能](#logger-%e5%8a%9f%e8%83%bd)
+  - [中间件的概念](#%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e6%a6%82%e5%bf%b5)
+  - [中间件栈](#%e4%b8%ad%e9%97%b4%e4%bb%b6%e6%a0%88)
+  - [异步中间件](#%e5%bc%82%e6%ad%a5%e4%b8%ad%e9%97%b4%e4%bb%b6)
+  - [中间件合成](#%e4%b8%ad%e9%97%b4%e4%bb%b6%e5%90%88%e6%88%90)
+- [错误处理](#%e9%94%99%e8%af%af%e5%a4%84%e7%90%86)
+  - [500 错误](#500-%e9%94%99%e8%af%af)
+  - [404 错误](#404-%e9%94%99%e8%af%af)
+  - [处理错误的中间件](#%e5%a4%84%e7%90%86%e9%94%99%e8%af%af%e7%9a%84%e4%b8%ad%e9%97%b4%e4%bb%b6)
+  - [error 事件的监听](#error-%e4%ba%8b%e4%bb%b6%e7%9a%84%e7%9b%91%e5%90%ac)
+  - [释放 error 事件](#%e9%87%8a%e6%94%be-error-%e4%ba%8b%e4%bb%b6)
+- [Web App 的功能](#web-app-%e7%9a%84%e5%8a%9f%e8%83%bd)
+  - [Cookies](#cookies)
+  - [表单](#%e8%a1%a8%e5%8d%95)
+  - [文件上传](#%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0)
+
 # 初见
 也不是第一次使用koa了，脑子里提到koa，想到的就是非常多的插件，基本上开发过程中想得到的功能都能找到相关的包。还有一个概念就是洋葱圈模型，这个概念第一次接触还是从 [eggjs](https://eggjs.org/) 中知悉，不得不说 egg 文档写的真的好，知识点也很细，而且之前看[cnode](https://cnodejs.org/)有人评价过egg，很多人在使用koa最后实现的就是一个eggjs这样一个整合。
 
@@ -436,3 +466,4 @@ const main = async function(ctx) {
 app.use(koaBody({ multipart: true }));
 /* ... */
 ```
+![](images/2019-12-23-16-30-50.png)
