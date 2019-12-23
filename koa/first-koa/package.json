@@ -1,0 +1,18 @@
+{
+  "name": "first-koa",
+  "version": "1.0.0",
+  "description": "也不是第一次使用koa了，脑子里提到koa，想到的就是非常多的插件，基本上开发过程中想得到的功能都能找到相关的包。还有一个概念就是洋葱圈模型，这个概念第一次接触还是从 [eggjs](https://eggjs.org/) 中知悉，不得不说 egg 文档写的真的好，知识点也很细，而且之前看[cnode](https://cnodejs.org/)有人评价过egg，很多人在使用koa最后实现的就是一个eggjs这样一个整合。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs.promised": "^3.0.0",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
+  }
+}
