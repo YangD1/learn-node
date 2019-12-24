@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const compose = require('koa-compose')
 
 const app = new Koa();
 
@@ -22,6 +23,7 @@ app.on('error', function(err) {
   console.log(err);
 });
 
-app.use(handler);
-app.use(main);
+const middleware = compose([handler, main])
+
+app.use(middleware);
 app.listen(3000);
