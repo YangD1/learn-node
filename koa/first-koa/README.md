@@ -33,6 +33,7 @@
 
 ## 参考
 - [阮一峰 - Koa 框架教程](https://www.ruanyifeng.com/blog/2017/08/koa.html)
+- [koa 中文文档](https://koa.bootcss.com/)
 
 ## 概念
 koa 是个非常简单好用的 web 框架，从github中看[koa](https://github.com/koajs/koa)仓库看到源代码确实很简短。
@@ -54,7 +55,16 @@ app.listen(3000);
 ```bash
 $ node server.js
 ```
-这样就实现了http服务，但是没有任何内容
+这样就实现了http服务，但是没有任何内容  
+
+> 这里的`app.listen()`就是 koa 提供的语法糖，Node 中的实现如下：
+```js
+const http = require('http');
+const Koa = require('koa');
+const app = new Koa();
+http.createServer(app.callback()).listen(3000);
+```
+这里的`app.callback()`, 返回适用于 `http.createServer()` 方法的回调函数来处理请求。你也可以使用此回调函数将 koa 应用程序挂载到 Connect/Express 应用程序中。
 
 ## Context 对象
 Koa 提供一个 Context 对象，表示一次对话的上下文（包括 HTTP 请求 (request) 和 HTTP 回复（response））。通过加工这个对象，就可以控制返回给用户的内容。  
@@ -190,6 +200,7 @@ app.use(route.get('/redirect', redirect));
 上面定义了，如果访问`/redirect`,将会重定向到`/`，关键代码就是`ctx.response.redirect('/')`
 
 # 中间件
+主要关注`app.use(function)`这个方法的内容，它会将参数中的function 添加到应用实例中。
 ## Logger 功能
 Koa 最大的一个特色，最重要的一个设计就是中间件（middleware）。实现一个 Logger（打印日志）功能：
 ```js
@@ -301,6 +312,7 @@ app.use(middlewares);
 ```
 
 # 错误处理
+默认情况下，将所有错误输出到 stderr（Standard Error），除非 `app.silent` 为 `true`。
 ## 500 错误
 Koa 提供 `ctx.throw()` 方法，用来抛出错误，`ctx.throw(500)` 就是抛出 500 错误：
 ```js
@@ -317,6 +329,7 @@ const main = ctx => {
 
 ## 404 错误
 将 `ctx.response.status` 设置成 404，就相当于 `ctx.throw(404)`，返回 404 错误。一般服务器响应错误还是用`ctx.throw()`。
+> 如果没有设置`response.status`，Koa 会自动设置状态为 200 或204
 ```js
 // 404.js
 /* ... */
